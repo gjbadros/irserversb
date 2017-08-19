@@ -1,0 +1,52 @@
+*HD
+FOX	702
+NBC	703
+CBS	705
+KICU	706
+ABC	707
+ESPN	724
+ESPN2	725
+Bravo	733
+AE	734
+TBS	735
+SciFi	736
+TNT	737
+USA	737
+UHD	739
+FX	741
+HGTV	746
+Food	747
+HM	749
+Discovery	750
+Animal Planet	751
+TLC	752
+E!	753
+HDTheatre	754
+Travel	755
+Science	756
+National Geographic	757
+History	758
+CNN	759
+Fox News	760
+Fox Business	761
+CNBC	762
+Family	764
+Disney	765
+Toon	766
+AMC	769
+
+*Premium
+HBO	770
+Encore	775
+Starz	780
+Showtime	785
+Cinemax	792
+
+*Local
+-Kron	704
+-PBS	709
+-KBCWDT	712
+
+*Non-HD
+TCM	501
+Fox MC	506

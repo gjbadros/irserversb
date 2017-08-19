@@ -1,0 +1,81 @@
+#
+# this config file was originally generated
+# using lirc-0.6.6(serial) on Fri Mar 28 22:46:44 2003
+# modified by hand on Sunday Jul 17 00:12:00 2005
+#
+# contributed by rob scullion
+# based on the DCT2000 file contrib'd by shane bradley
+#
+# brand:                       Motorola
+# model no. of remote control: ? - Comcast badged
+# devices being controlled by this remote: DCT2524/1612
+#
+# Note: The "ON DEMAND" button on the Comcast
+# badged remote just sends a "1" followed by
+# an "ok/select" and is thus not included in
+# this config file.
+                                                                                    
+begin remote
+ name  DCT2524
+  bits             16
+  flags SPACE_ENC|CONST_LENGTH
+  eps              30
+  aeps            100
+
+  header         9036  4424
+  one             556  2185
+  zero            556  4424
+  ptrail          556
+  gap          100025
+  toggle_bit        0
+ 
+
+      begin codes
+          power                    0x000000000000AFF9
+          rew                      0x00000000000087F7
+          play                     0x00000000000027FD
+          ffwd                     0x00000000000047FB
+          stop                     0x000000000000C7F3
+          pause                    0x00000000000007FF
+          rec                      0x00000000000073FC
+          skipback                 0x000000000000C3F7
+          mydvr                    0x00000000000043FF
+          live                     0x00000000000083F0
+          pageup                   0x000000000000A3F3
+          pagedown                 0x00000000000023FB
+          a_lock                   0x00000000000097F6
+          b_day-                   0x00000000000063FD
+          c_day+                   0x000000000000E3F5
+          up                       0x000000000000D3F6
+          down                     0x00000000000053FE
+          left                     0x00000000000093F1
+          right                    0x00000000000013F9
+          ok/select                0x00000000000077F8
+          guide                    0x000000000000F3F4
+          info                     0x00000000000033FA
+          menu                     0x00000000000067F9
+          exit                     0x000000000000B7F4
+          help                     0x000000000000B3F2
+          last                     0x00000000000037FC
+          vol+                     0x0000000000004FF3
+          vol-                     0x0000000000008FFB
+          mute                     0x0000000000000FF7
+          fav                      0x00000000000057FA
+          ch+                      0x0000000000002FF5
+          ch-                      0x000000000000CFFD
+          1                        0x0000000000007FF0
+          2                        0x000000000000BFF8
+          3                        0x0000000000003FF4
+          4                        0x000000000000DFFC
+          5                        0x0000000000005FF2
+          6                        0x0000000000009FFA
+          7                        0x0000000000001FF6
+          8                        0x000000000000EFFE
+          9                        0x0000000000006FF1
+          0                        0x000000000000FFFF
+          tv/vcr_input             0x000000000000D7F2
+          hdzoom_enter             0x000000000000FDFC
+          pnp-swap                 0x0000000000003BF2
+      end codes
+ 
+end remote

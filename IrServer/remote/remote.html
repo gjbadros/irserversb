@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Badros Remote</title>
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+<link rel="apple-touch-icon" href="../iui/iui-logo-touch-icon.png" />
+<meta name="apple-touch-fullscreen" content="YES" />
+<style type="text/css" media="screen">@import "iui/iui.css";</style>
+<script type="application/x-javascript" src="iui/iui.js"></script>
+<script type="application/x-javascript">
+var baseurl = "http://192.168.0.74:8174/";
+function cmd(s) {
+	var img = new Image();
+	img.src = baseurl + s + "#" + Math.random();
+}
+var CodeFor = new Array();
+function DevCmd(dev, s) {
+        cmd("devcmd " + dev + CodeFromSymbolicCmd(dev, s));
+}
+  function watchtv() {
+    cmd("devcmd HDTV 0xA90"); // tv power on
+    cmd("devcmd PioneerAmp 0xA55A38C7"); // amp power on
+    // switch amp to MD
+  }
+
+  function watchdvr() {
+    watchtv();
+    cmd("devcmd DCT2524 0x43FF"); // mydvr
+  }
+  function watchondemand() {
+    watchtv();
+    cmd("devcmd DCT2524 0x67F9");
+  }
+
+  function listenmusic() {
+    cmd("devcmd PioneerAmp 0xA55A38C7 0xA55A32CD"); // amp power on + CD
+  }
+
+  function playxbox() {
+    cmd("devcmd PioneerAmp 0xA55A38C7");  // amp power on
+  }
+
+  function playwii() {
+    cmd("devcmd PioneerAmp 0xA55A38C7");  // amp power on
+  }
+</script>
+</head>
+
+<body>
+    <div class="toolbar">
+        <h1 id="pageTitle"></h1>
+        <a id="backButton" class="button" href="#"></a>
+        <a class="button" href="#lights" onClick='cmd("devcmd HDTV 0x070");'>Lights</a>
+    </div>
+    
+    <ul id="home" title="Activities" selected="true">
+        <li class="group">TV</li>
+        <li><a href="#TV_start"">Watch TV</a></li>
+        <li><a href="#TV_start" onClick="watchdvr();">... +turn it on</a></li>
+        <li><a href="#DVR_start" onClick="watchdvr();">... from DVR</a></li>
+        <li><a href="#OnDemand_start" onClick="watchondemand();">... from OnDemand</a></li>
+        <li class="group">Music</li>
+        <li><a href="#Music">Listen to Music</a></li>
+        <li><a href="#Music" onClick="listenmusic();">...+turn it on</a></li>
+        <li class="group">Gaming</li>
+        <li><a href="#XBox" onClick="playxbox();">XBox360</a></li>
+        <li><a href="#Wii" onClick="playwii();">Wii</a></li>
+    </ul>
+    
+    <div class="Panel" style="left: 100%;" id="TV_start" title="TV Controls">
+        <div class="row">
+	  <div class="leftButton button" onClick='cmd("devcmd HDTV 0xA90")'>TV On/Off</div>
+	  <div class="button" onClick='cmd("devcmd DCT2524 0x2FF5")'>Amp On/Off</div>
+	</div>
+        <div class="row">
+	  <div class="leftButton button" onClick='cmd("devcmd DCT2524 0xCFFD")'>Channel -</div>
+	  <div class="button" onClick='cmd("devcmd DCT2524 0x2FF5")'>Channel +</div>
+	</div>
+        <div class="row">        
+	  <div class="leftButton button" onClick='cmd("devcmd PioneerAmp 0xA55AD02F")'>Volume -</div>
+          <div class="button" onClick='cmd("devcmd PioneerAmp 0xA55A50AF")'>Volume +</div>
+	</div
+        <div class="row">
+          <div class="leftButton button" onClick='cmd("devcmd PioneerAmp 0xA55AD02F 0xA55AD02F 0xA55AD02F")'>Volume ---</div>
+          <div class="button" onClick='cmd("devcmd PioneerAmp 0xA55A50AF 0xA55A50AF 0xA55A50AF")'>Volume +++</div>
+	</div>
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 0 2");' title='devcmd DCT2524 0x1FF6 0xFFFF 0xBFF8'>FOX</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 0 3");' title='devcmd DCT2524 0x1FF6 0xFFFF 0x3FF4'>NBC</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 0 5");' title='devcmd DCT2524 0x1FF6 0xFFFF 0x5FF2'>CBS</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 0 6");' title='devcmd DCT2524 0x1FF6 0xFFFF 0x9FFA'>KICU</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 0 7");' title='devcmd DCT2524 0x1FF6 0xFFFF 0x1FF6'>ABC</b> &nbsp; &nbsp;
+      </div>
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 2 4");' title='devcmd DCT2524 0x1FF6 0xBFF8 0xDFFC'>ESPN</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 2 5");' title='devcmd DCT2524 0x1FF6 0xBFF8 0x5FF2'>ESPN2</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 3");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x3FF4'>Bravo</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 4");' title='devcmd DCT2524 0x1FF6 0x3FF4 0xDFFC'>AE</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 5");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x5FF2'>TBS</b> &nbsp; &nbsp;
+      </div>
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 3 6");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x9FFA'>SciFi</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 7");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x1FF6'>TNT</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 7");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x1FF6'>USA</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 3 9");' title='devcmd DCT2524 0x1FF6 0x3FF4 0x6FF1'>UHD</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 4 1");' title='devcmd DCT2524 0x1FF6 0xDFFC 0x7FF0'>FX</b> &nbsp; &nbsp;
+      </div>	
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 4 6");' title='devcmd DCT2524 0x1FF6 0xDFFC 0x9FFA'>HGTV</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 4 7");' title='devcmd DCT2524 0x1FF6 0xDFFC 0x1FF6'>Food</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 4 9");' title='devcmd DCT2524 0x1FF6 0xDFFC 0x6FF1'>HM</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 0");' title='devcmd DCT2524 0x1FF6 0x5FF2 0xFFFF'>Discovery</b> &nbsp; &nbsp;
+      </div>
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 5 1");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x7FF0'>Animal Planet</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 2");' title='devcmd DCT2524 0x1FF6 0x5FF2 0xBFF8'>TLC</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 3");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x3FF4'>E!</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 4");' title='devcmd DCT2524 0x1FF6 0x5FF2 0xDFFC'>HDTheatre</b> &nbsp; &nbsp;
+      </div>
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 5 5");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x5FF2'>Travel</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 6");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x9FFA'>Science</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 7");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x1FF6'>Nat'l Geographic</b> &nbsp; &nbsp;
+      </div>
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 5 8");' title='devcmd DCT2524 0x1FF6 0x5FF2 0xEFFE'>History</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 5 9");' title='devcmd DCT2524 0x1FF6 0x5FF2 0x6FF1'>CNN</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 0");' title='devcmd DCT2524 0x1FF6 0x9FFA 0xFFFF'>Fox News</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 1");' title='devcmd DCT2524 0x1FF6 0x9FFA 0x7FF0'>Fox Busin.</b> &nbsp; &nbsp;
+      </div>
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 6 2");' title='devcmd DCT2524 0x1FF6 0x9FFA 0xBFF8'>CNBC</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 4");' title='devcmd DCT2524 0x1FF6 0x9FFA 0xDFFC'>Family</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 5");' title='devcmd DCT2524 0x1FF6 0x9FFA 0x5FF2'>Disney</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 6");' title='devcmd DCT2524 0x1FF6 0x9FFA 0x9FFA'>Toon</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 6 9");' title='devcmd DCT2524 0x1FF6 0x9FFA 0x6FF1'>AMC</b> &nbsp; &nbsp;
+      </div>
+
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 7 0");' title='devcmd DCT2524 0x1FF6 0x1FF6 0xFFFF'>HBO</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 7 5");' title='devcmd DCT2524 0x1FF6 0x1FF6 0x5FF2'>Encore</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 8 0");' title='devcmd DCT2524 0x1FF6 0xEFFE 0xFFFF'>Starz</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "7 8 5");' title='devcmd DCT2524 0x1FF6 0xEFFE 0x5FF2'>Showtime</b> &nbsp; &nbsp;
+      </div>
+
+
+
+      <div class="row">      
+<b onClick='DevCmd("DCT2524", "7 9 2");' title='devcmd DCT2524 0x1FF6 0x6FF1 0xBFF8'>Cinemax</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "5 0 1");' title='devcmd DCT2524 0x5FF2 0xFFFF 0x7FF0'>TCM</b> &nbsp; &nbsp;
+<b onClick='DevCmd("DCT2524", "5 0 6");' title='devcmd DCT2524 0x5FF2 0xFFFF 0x9FFA'>Fox MC</b> &nbsp; &nbsp;
+      </div>
+
+</large>
+    </div>
+<script type='text/javascript' language='javascript'>
+function DefineAllDevices() {
+cmd("setdev SonyTV 0x9c40 0xaf3f 0x0 0x968 0x23d 0x4ba 0x247 0x262 0x247 0xc 0x1 0x2");
+cmd("setdev PioneerAmp 0x9920 0x18c7c 0x1f4 0x2134 0x1004 0x1f4 0x5dc 0x1f4 0x1f4 0x20 0x0 0x1");
+cmd("setdev DCT2524 0x9c40 0x186b9 0x22c 0x234c 0x1148 0x22c 0x889 0x22c 0x1148 0x10 0x1 0x1");
+}
+var d = CodeFor['SonyTV'] = new Array()
+d['ENTER'] = '0xD10';
+d['JUMP'] = '0xDD0';
+d['0'] = '0x910';
+d['9'] = '0x110';
+d['8'] = '0xE10';
+d['7'] = '0x610';
+d['6'] = '0xA10';
+d['5'] = '0x210';
+d['4'] = '0xC10';
+d['3'] = '0x410';
+d['2'] = '0x810';
+d['1'] = '0x10';
+d['DISPLAY'] = '0x5D0';
+d['MTS/SAP'] = '0xE90';
+d['SLEEP'] = '0x6D0';
+d['PICTURE_MODE'] = '0x270';
+d['TV/VIDEO'] = '0xA50';
+d['SYSTEM_OFF'] = '0xF41';
+d['MUTING'] = '0x290';
+d['POWER'] = '0xA90';
+d['up'] = '0x2F0';
+d['down'] = '0xAF0';
+d['left'] = '0x2D0';
+d['right'] = '0xCD0';
+d['center'] = '0xA70';
+d['MENU'] = '0x70';
+d['CH+'] = '0x90';
+d['CH-'] = '0x890';
+d['VOL+'] = '0x490';
+d['VOL-'] = '0xC90';
+d['RESET'] = '0x690';
+var d = CodeFor['PioneerAmp'] = new Array()
+d['VOL+'] = '0xA55A50AF';
+d['VOL-'] = '0xA55AD02F';
+d['PWR'] = '0xA55A38C7';
+d['CD'] = '0xA55A32CD';
+d['VCR1'] = '0xA55AF00F';
+d['VCR2'] = '0xA55A708F';
+d['VDP'] = '0xA55AB04F';
+d['TV'] = '0xA55A30CF';
+d['VSEL'] = '0xA55A2AD5';
+d['TAPE1'] = '0xA55A728D';
+d['TAPE2'] = '0xA55AB847';
+d['TUNER'] = '0xA55AE21D';
+d['PHONO'] = '0xA55AB24D';
+d['MUTE'] = '0xA55A48B7';
+d['1'] = '0x25DA807F';
+d['2'] = '0x25DA40BF';
+d['3'] = '0x25DAC03F';
+d['4'] = '0x25DA20DF';
+d['5'] = '0x25DAA05F';
+d['6'] = '0x25DA604F';
+d['7'] = '0x25DAE01F';
+d['8'] = '0x25DA10EF';
+d['9'] = '0x25DA906F';
+d['0'] = '0x25DA00FF';
+d['FREQ+'] = '0x25DA6A95';
+d['FREQ-'] = '0x25DAEA15';
+d['BAND'] = '0x25DAC837';
+var d = CodeFor['DCT2524'] = new Array()
+d['power'] = '0xAFF9';
+d['rew'] = '0x87F7';
+d['play'] = '0x27FD';
+d['ffwd'] = '0x47FB';
+d['stop'] = '0xC7F3';
+d['pause'] = '0x7FF';
+d['rec'] = '0x73FC';
+d['skipback'] = '0xC3F7';
+d['mydvr'] = '0x43FF';
+d['live'] = '0x83F0';
+d['pageup'] = '0xA3F3';
+d['pagedown'] = '0x23FB';
+d['a_lock'] = '0x97F6';
+d['b_day-'] = '0x63FD';
+d['c_day+'] = '0xE3F5';
+d['up'] = '0xD3F6';
+d['down'] = '0x53FE';
+d['left'] = '0x93F1';
+d['right'] = '0x13F9';
+d['ok/select'] = '0x77F8';
+d['guide'] = '0xF3F4';
+d['info'] = '0x33FA';
+d['menu'] = '0x67F9';
+d['exit'] = '0xB7F4';
+d['help'] = '0xB3F2';
+d['last'] = '0x37FC';
+d['vol+'] = '0x4FF3';
+d['vol-'] = '0x8FFB';
+d['mute'] = '0xFF7';
+d['fav'] = '0x57FA';
+d['ch+'] = '0x2FF5';
+d['ch-'] = '0xCFFD';
+d['1'] = '0x7FF0';
+d['2'] = '0xBFF8';
+d['3'] = '0x3FF4';
+d['4'] = '0xDFFC';
+d['5'] = '0x5FF2';
+d['6'] = '0x9FFA';
+d['7'] = '0x1FF6';
+d['8'] = '0xEFFE';
+d['9'] = '0x6FF1';
+d['0'] = '0xFFFF';
+d['tv/vcr_input'] = '0xD7F2';
+d['hdzoom_enter'] = '0xFDFC';
+d['pnp-swap'] = '0x3BF2';
+function CodeFromSymbolicCmd(dev, cmdstr) {
+  var answer = "";
+  var cmds = cmdstr.split(" ");
+  for (var i=0; i < cmds.length; ++i) {
+    var code = CodeFor[dev][cmds[i]];
+    if (code != undefined && code != 'undefined') {
+      answer += " " + code;
+    }
+  }
+  return answer;
+}
+DefineAllDevices();
+</script>
+</body>
+</html>

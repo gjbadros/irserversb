@@ -1,0 +1,66 @@
+#
+# This config file has been automatically converted from a device file
+# found in the 06/26/00 release of the Windows Slink-e software
+# package.
+#
+# Many thanks to Colby Boles of Nirvis Systems Inc. for allowing us to
+# use these files.
+#
+# The original filename was: "vsx9300.cde"
+#
+# The original description for this device was:
+#
+# Pioneer VSX-9300 A/V Receiver
+#
+
+
+begin remote
+
+  name  RCV
+  bits           32
+  flags SPACE_ENC
+  eps            20
+  aeps          200
+
+  header       8500  4100
+  one           500  1500
+  zero          500   500
+  ptrail 500
+  gap          101500
+  toggle_bit      0
+
+  frequency    39200
+
+      begin codes
+          VOL+                     0xA55A50AF
+          VOL-                     0xA55AD02F
+          PWR                      0xA55A38C7
+          CD                       0xA55A32CD
+          VCR1                     0xA55AF00F
+          VCR2                     0xA55A708F
+          VDP                      0xA55AB04F
+          TV                       0xA55A30CF
+          VSEL                     0xA55A2AD5
+          TAPE1                    0xA55A728D
+          TAPE2                    0xA55AB847
+          TUNER                    0xA55AE21D
+          PHONO                    0xA55AB24D
+          MUTE                     0xA55A48B7
+          1                        0x25DA807F
+          2                        0x25DA40BF
+          3                        0x25DAC03F
+          4                        0x25DA20DF
+          5                        0x25DAA05F
+          6                        0x25DA604F
+          7                        0x25DAE01F
+          8                        0x25DA10EF
+          9                        0x25DA906F
+          0                        0x25DA00FF
+          FREQ+                    0x25DA6A95
+          FREQ-                    0x25DAEA15
+          BAND                     0x25DAC837
+      end codes
+
+end remote
+
+

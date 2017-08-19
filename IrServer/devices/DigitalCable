@@ -1,0 +1,70 @@
+#
+# this config file was automatically generated
+# using lirc-0.6.4(serial) on Mon Nov 19 00:50:17 2001
+#
+# contributed by 
+#
+# brand:                       Cable
+# model no. of remote control: 
+# supported devices: Motorola Digital Cable Box
+#
+
+begin remote
+
+  name  Cable
+  bits           16
+  flags SPACE_ENC|CONST_LENGTH
+  eps            30
+  aeps          100
+
+  header       9085  4383
+  one           602  4383
+  zero          602  2140
+  ptrail        581
+  repeat       9071  2184
+  gap          100072
+  toggle_bit      0
+
+
+      begin codes
+          POWER                    0x0000000000005006
+          1                        0x000000000000800F
+          2                        0x0000000000004007
+          3                        0x000000000000C00B
+          4                        0x0000000000002003
+          5                        0x000000000000A00D
+          6                        0x0000000000006005
+          7                        0x000000000000E009
+          8                        0x0000000000001001
+          9                        0x000000000000900E
+          MUTE                     0x000000000000F008
+          0                        0x0000000000000000
+          MUSIC                    0x000000000000080F
+          VOLUP                    0x000000000000B00C
+          LAST                     0x000000000000C803
+          CHNUP                    0x000000000000D00A
+          VOLDN                    0x0000000000007004
+          FAV                      0x000000000000A805
+          CHNDN                    0x0000000000003002
+          PPV                      0x0000000000006809
+          GUIDE                    0x0000000000000C0B
+          EXIT                     0x000000000000480B
+          INFO                     0x000000000000CC05
+          MENU                     0x0000000000009806
+          UP                       0x0000000000002C09
+          DOWN                     0x000000000000AC01
+          LEFT                     0x0000000000006C0E
+          RIGHT                    0x000000000000EC06
+          PGUP                     0x0000000000005C0C
+          PGDN                     0x000000000000DC04
+          THEME                    0x000000000000E801
+          CANCEL                   0x0000000000001406
+          DAY-                     0x0000000000009C02
+          DAY+                     0x0000000000001C0A
+          BYPASS                   0x000000000000280D
+          LIST                     0x000000000000E40E
+      end codes
+
+end remote
+
+
